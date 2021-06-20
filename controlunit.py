@@ -35,7 +35,15 @@ ALU_OP_SRL = 9
 ALU_OP_SRA = 10
 ALU_OP_LUI = 11
 ALU_OP_PASS_B = 12
-ALU_OP_IGNORE = 15
+ALU_OP_MFLO = 13
+ALU_OP_MFHI = 14
+ALU_OP_MTLO = 15
+ALU_OP_MTHI = 16
+ALU_OP_MULT = 17
+ALU_OP_MULTU = 18
+ALU_OP_DIV = 19
+ALU_OP_DIVU = 20
+ALU_OP_IGNORE = 31
 
 ALU_B_SRC_RT = 0
 ALU_B_SRC_IMM = 1
@@ -86,7 +94,7 @@ def serialize_instr(instr: Instruction) -> int:
     result |= (1 if instr.do_sign_ext else 0) << 19
     result |= instr.break_code << 20
     result |= (1 if instr.shamt_from_reg else 0) << 22
-    result |= (instr.mem_len) << 23
+    result |= instr.mem_len << 23
     result |= (1 if instr.mem_signext else 0) << 25
     return result
 
@@ -175,7 +183,15 @@ rtype_ops = {
     0b001101: make_break(BREAK_INSTR),
     0b001001: make_jr(True),
     0b001000: make_jr(False),
-    0b001100: make_break(BREAK_SYSCALL)
+    0b001100: make_break(BREAK_SYSCALL),
+    0b011010: make_3r_alu(ALU_OP_DIV),
+    0b011011: make_3r_alu(ALU_OP_DIVU),
+    0b010000: make_3r_alu(ALU_OP_MFHI),
+    0b010010: make_3r_alu(ALU_OP_MFLO),
+    0b010001: make_3r_alu(ALU_OP_MTHI),
+    0b010011: make_3r_alu(ALU_OP_MTLO),
+    0b011000: make_3r_alu(ALU_OP_MULT),
+    0b011001: make_3r_alu(ALU_OP_MULTU)
 }
 
 INSTR_BITS = 6

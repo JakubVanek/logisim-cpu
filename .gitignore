@@ -130,3 +130,6 @@ dmypy.json
 
 # Logisim instruction decoder rom files
 *.rom
+
+# PyCharm
+/.idea

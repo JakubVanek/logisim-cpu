@@ -60,15 +60,15 @@ class Instruction:
     branch_type_mux: int  # . num  3, 2 bit, start  4
     branch_cond_mux: int  # . num  4, 3 bit, start  6
     alu_b_src_mux: int  # ... num  5, 2 bit, start  9
-    alu_op: int  # .......... num  6, 4 bit, start 11
-    reg_write: bool  # ...... num  7, 1 bit, start 15
-    mem_write: bool  # ...... num  8, 1 bit, start 16
-    mem_to_reg: bool  # ..... num  9, 1 bit, start 17
-    do_sign_ext: bool  # .... num 10, 1 bit, start 18
-    break_code: int  # ...... num 11, 2 bit, start 19
-    shamt_from_reg: bool  # . num 12, 1 bit, start 21
-    mem_len: int  # ......... num 13, 2 bit, start 22
-    mem_signext: bool  # .... num 14, 1 bit, start 24
+    alu_op: int  # .......... num  6, 5 bit, start 11
+    reg_write: bool  # ...... num  7, 1 bit, start 16
+    mem_write: bool  # ...... num  8, 1 bit, start 17
+    mem_to_reg: bool  # ..... num  9, 1 bit, start 18
+    do_sign_ext: bool  # .... num 10, 1 bit, start 19
+    break_code: int  # ...... num 11, 2 bit, start 20
+    shamt_from_reg: bool  # . num 12, 1 bit, start 22
+    mem_len: int  # ......... num 13, 2 bit, start 23
+    mem_signext: bool  # .... num 14, 1 bit, start 25
 
 
 def serialize_instr(instr: Instruction) -> int:
@@ -80,14 +80,14 @@ def serialize_instr(instr: Instruction) -> int:
     result |= instr.branch_cond_mux << 6
     result |= instr.alu_b_src_mux << 9
     result |= instr.alu_op << 11
-    result |= (1 if instr.reg_write else 0) << 15
-    result |= (1 if instr.mem_write else 0) << 16
-    result |= (1 if instr.mem_to_reg else 0) << 17
-    result |= (1 if instr.do_sign_ext else 0) << 18
-    result |= instr.break_code << 19
-    result |= (1 if instr.shamt_from_reg else 0) << 21
-    result |= (instr.mem_len) << 22
-    result |= (1 if instr.mem_signext else 0) << 24
+    result |= (1 if instr.reg_write else 0) << 16
+    result |= (1 if instr.mem_write else 0) << 17
+    result |= (1 if instr.mem_to_reg else 0) << 18
+    result |= (1 if instr.do_sign_ext else 0) << 19
+    result |= instr.break_code << 20
+    result |= (1 if instr.shamt_from_reg else 0) << 22
+    result |= (instr.mem_len) << 23
+    result |= (1 if instr.mem_signext else 0) << 25
     return result
 
 

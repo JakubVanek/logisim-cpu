@@ -4,7 +4,7 @@ OBJCOPY    = $(CROSS)objcopy
 TARGET_ELF = fibo.elf
 TARGET_BIN = fibo.bin
 
-CFLAGS  += -g0 -O3 -Wall -fno-lto -ffreestanding
+CFLAGS  += -g0 -O3 -Wall -fno-lto -march=mips2 -ffreestanding
 LDFLAGS += $(CFLAGS) -T program.lds -nostartfiles -nodefaultlibs -nostdlib
 
 SOURCES = $(wildcard *.c)

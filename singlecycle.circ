@@ -396,7 +396,7 @@ end TCL_Generic;
     </comp>
     <comp lib="8" loc="(737,240)" name="Text">
       <a name="font" val="SansSerif plain 12"/>
-      <a name="text" val="stack"/>
+      <a name="text" val="data 2"/>
     </comp>
     <comp lib="8" loc="(850,237)" name="Text">
       <a name="font" val="SansSerif plain 12"/>
@@ -733,8 +733,13 @@ end TCL_Generic;
       <a name="addrWidth" val="16"/>
       <a name="appearance" val="classic"/>
       <a name="contents">addr/data: 16 32
-20010010 20020000 20030001 20040000 3c06f000 ac820000 acc20000 32820
-621820 51020 20840004 1420fff9 2021ffff d
+3c10f000 2408ffff ae080000 3c1d0002 27bdfffc 3c1e0002 27defffc 241c0000
+3a0f025 3c080000 25080000 3c090000 25290000 ad000000 1509fffe 21080004
+3c080000 25080000 3c090000 25290000 3c0a8002 254a00bc 8d0b0000 ad4b0000
+214a0004 1509fffc 21080004 20040000 20050000 ae040000 c008023 0
+d 1000fffe 0 24030014 24020001 2025 3c06f000 822821
+2463ffff acc20000 402025 1460fffb a01025 3e00008 1025 0
+10000 3000001
 </a>
       <a name="dataWidth" val="32"/>
     </comp>
